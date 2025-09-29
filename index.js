@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require ("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,16 +9,18 @@ const app = express() ;
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://saurabhdubey3713_db_user:UrwzcbI6dg4Z2VaH@cluster0.p808nbz.mongodb.net/")
+const MONGO_URI = process.env.MONGO_URI ; 
+
+mongoose.connect(MONGO_URI)
 .then(()=>console.log("mongoose database connected"))
 .catch(err=>console.log(err));
 
-const port = 3000
+const port = process.env.PORT || 3000 ;
 
 app.get("/" , (req , res)=>{
     res.send("notes is working");
 })
 
-app.listen(3000 , ()=>{
+app.listen(port , ()=>{
     console.log(`app is listening on ${port}`)
 })
