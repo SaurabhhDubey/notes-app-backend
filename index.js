@@ -14,7 +14,7 @@ mongoose.connect("mongodb+srv://saurabhdubey3713_db_user:UrwzcbI6dg4Z2VaH@cluste
 const port = 3000
 
 app.get("/" , (req , res)=>{
-    res.send("saurabh dubey");
+    res.send("notes is working");
 })
 
 app.listen(3000 , ()=>{
